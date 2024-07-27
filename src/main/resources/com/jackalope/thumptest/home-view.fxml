@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane fx:id="titledPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jackalope.thumptest.HomeController">
+<TitledPane fx:id="titledPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jackalope.thumptest.controller.HomeController">
       <ScrollPane fx:id="scrollPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="934.0">
         <content>
           <AnchorPane>

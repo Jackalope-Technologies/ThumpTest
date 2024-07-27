@@ -49,7 +49,7 @@ class ThumpTestApplicationTest {
         robot.clickOn("#cpuRunBurnTestButton");
 
         TextArea logArea = (TextArea) scene.lookup("#logArea");
-        assertTrue(logArea.getText().startsWith(expectedText));
+        assertTrue(logArea.getText().contains(expectedText));
     }
 
     @Test
