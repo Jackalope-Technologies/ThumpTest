@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.jackalope.thumptest.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
 
-    <Label fx:id="welcomeText"/>
-    <Button fx:id="welcomeButton" text="Welcome!" onAction="#onWelcomeButtonClick"/>
-</VBox>
+<TitledPane fx:id="titledPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jackalope.thumptest.HomeController">
+      <ScrollPane fx:id="scrollPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="934.0">
+        <content>
+          <AnchorPane>
+            <children>
+               <TextArea fx:id="logArea" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="360.0" prefWidth="911.0" />
+               <Button fx:id="cpuRunBurnTestButton" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCpuRunBurnTestButtonClick" text="Run CPU Burn Test" />
+               <Button fx:id="clearButton" layoutX="865.0" layoutY="381.0" mnemonicParsing="false" onAction="#onClearButtonClick" text="Clear" />
+            </children></AnchorPane>
+        </content>
+      </ScrollPane>
+   <graphic>
+      <MenuBar fx:id="menuBar">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </graphic>
+</TitledPane>

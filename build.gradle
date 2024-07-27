@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.javamodularity.moduleplugin' version '1.8.15'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.25.0'
 }
@@ -11,10 +11,12 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    google()
 }
 
 ext {
     junitVersion = '5.10.0'
+    testFXVersion = '4.0.18'
 }
 
 sourceCompatibility = '21'
@@ -26,8 +28,10 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'com.jackalope.thumptest'
-    mainClass = 'com.jackalope.thumptest.HelloApplication'
+    mainClass = 'com.jackalope.thumptest.ThumpTestApplication'
 }
+
+java.modularity.inferModulePath = false
 
 javafx {
     version = '21'
@@ -37,15 +41,22 @@ javafx {
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.2')
     implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
-        exclude(group: 'org.openjfx')
+        exclude(group: "org.openjfx")
     }
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    implementation("org.testfx:testfx-junit5:${testFXVersion}") {
+        exclude(group: "org.hamcrest")
+    }
+    testImplementation("org.hamcrest:hamcrest:2.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
     useJUnitPlatform()
+    moduleOptions {
+        runOnClasspath = true
+    }
 }
 
 jlink {

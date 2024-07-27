@@ -1,0 +1,7 @@
+// make module visible
+--add-modules
+  org.testfx,org.testfx.junit5
+
+// "requires java.scripting"
+--add-reads
+  com.jackalope.thumptest=org.testfx,org.testfx.junit5

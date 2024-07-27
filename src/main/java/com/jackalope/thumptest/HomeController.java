@@ -1,19 +1,24 @@
+/* Copyright (C) 2024 Jackalope Technologies Ltd - All Rights Reserved */
 package com.jackalope.thumptest;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 public class HomeController {
     @FXML
-    public Button welcomeButton;
+    public Button cpuRunBurnTestButton;
 
     @FXML
-    private Label welcomeText;
+    public TextArea logArea;
 
     @FXML
-    protected void onWelcomeButtonClick() {
-        welcomeText.setText("Welcome to ThumpTest!");
-        welcomeButton.setVisible(false);
+    protected void onCpuRunBurnTestButtonClick() {
+        logArea.appendText("Button was clicked!\r\n");
+    }
+
+    @FXML
+    protected void onClearButtonClick() {
+        logArea.clear();
     }
 }
