@@ -2,12 +2,14 @@
 package com.jackalope.thumptest.controller;
 
 import com.jackalope.thumptest.service.HardwareInfoService;
+import com.jackalope.thumptest.service.I18nService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class HomeController {
     private final HardwareInfoService hardwareInfoService;
+    private final I18nService i18nService;
 
     @FXML
     public Button cpuRunBurnTestButton;
@@ -17,6 +19,7 @@ public class HomeController {
 
     public HomeController() {
         this.hardwareInfoService = new HardwareInfoService();
+        i18nService = new I18nService();
     }
 
     public void initialize() {
@@ -26,7 +29,7 @@ public class HomeController {
 
     @FXML
     protected void onCpuRunBurnTestButtonClick() {
-        logArea.appendText("Button was clicked!\r\n");
+        logArea.appendText(i18nService.getString("buttonWasClicked") + "\r\n");
     }
 
     @FXML

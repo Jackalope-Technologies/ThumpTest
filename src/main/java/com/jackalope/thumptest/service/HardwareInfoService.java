@@ -13,9 +13,11 @@ import static java.lang.Long.valueOf;
 
 public class HardwareInfoService {
     private final SystemInfo systemInfo;
+    private final I18nService i18nService;
 
     public HardwareInfoService() {
         systemInfo = new SystemInfo();
+        i18nService = new I18nService();
     }
 
     public static String twoDecimalPlaces(double value) {
