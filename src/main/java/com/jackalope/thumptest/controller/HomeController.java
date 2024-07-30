@@ -29,7 +29,7 @@ public class HomeController {
 
     @FXML
     protected void onCpuRunBurnTestButtonClick() {
-        logArea.appendText(i18nService.getString("buttonWasClicked") + "\r\n");
+        logArea.appendText(i18nService.getString("text.buttonWasClicked") + "\r\n");
     }
 
     @FXML

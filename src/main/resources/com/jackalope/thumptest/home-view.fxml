@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <TitledPane fx:id="titledPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jackalope.thumptest.controller.HomeController">
       <ScrollPane fx:id="scrollPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="934.0">
         <content>
           <AnchorPane>
             <children>
                <TextArea fx:id="logArea" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="360.0" prefWidth="911.0" />
-               <Button fx:id="cpuRunBurnTestButton" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCpuRunBurnTestButtonClick" text="Run CPU Burn Test" />
-               <Button fx:id="clearButton" layoutX="865.0" layoutY="381.0" mnemonicParsing="false" onAction="#onClearButtonClick" text="Clear" />
+               <Button fx:id="cpuRunBurnTestButton" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCpuRunBurnTestButtonClick" text="%button.runCPUBurnTest" />
+               <Button fx:id="clearButton" layoutX="865.0" layoutY="381.0" mnemonicParsing="false" onAction="#onClearButtonClick" text="%button.clear" />
             </children></AnchorPane>
         </content>
       </ScrollPane>
    <graphic>
       <MenuBar fx:id="menuBar">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="%menuItem.file">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" text="%menuItem.close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="%menuItem.edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="%menuItem.delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="%menuItem.help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="%menuItem.about" />
             </items>
           </Menu>
         </menus>
