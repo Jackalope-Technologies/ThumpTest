@@ -14,6 +14,7 @@ import org.testfx.framework.junit5.Start;
 import org.testfx.matcher.control.LabeledMatchers;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -24,6 +25,8 @@ class ThumpTestApplicationTest {
     @Start
     private void start(final Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("home-view.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Strings");
+        fxmlLoader.setResources(bundle);
         scene = new Scene(fxmlLoader.load());
 
         stage.setTitle("ThumpTest");
