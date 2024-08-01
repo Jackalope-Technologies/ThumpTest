@@ -6,6 +6,7 @@ module com.jackalope.thumptest {
     requires com.dlsc.formsfx;
     requires com.github.oshi;
     requires org.slf4j;
+    requires static lombok;
 
     opens com.jackalope.thumptest to javafx.fxml;
     exports com.jackalope.thumptest;

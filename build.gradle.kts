@@ -6,6 +6,7 @@ plugins {
     id("org.javamodularity.moduleplugin").version("1.8.15")
     id("org.openjfx.javafxplugin").version("0.0.13")
     id("org.beryx.jlink").version("2.25.0")
+    id("io.freefair.lombok").version("8.6")
 }
 
 repositories {
