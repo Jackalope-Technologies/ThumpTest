@@ -47,13 +47,13 @@ dependencies {
         exclude(group = "org.openjfx")
     }
     implementation("com.github.oshi:oshi-core:6.6.2")
+    implementation("ch.qos.logback:logback-classic:1.5.6")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     implementation("org.testfx:testfx-junit5:${testFXVersion}") {
         exclude(group = "org.hamcrest")
     }
     testImplementation("org.hamcrest:hamcrest:2.2")
-    testImplementation("ch.qos.logback:logback-classic:1.5.6")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
