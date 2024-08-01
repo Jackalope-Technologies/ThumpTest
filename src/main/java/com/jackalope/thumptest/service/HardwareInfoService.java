@@ -14,10 +14,14 @@ import static java.lang.Long.valueOf;
 public class HardwareInfoService {
     private final SystemInfo systemInfo;
     private final I18nService i18nService;
+    private final HardwareAbstractionLayer hardwareInfo;
+    private final CentralProcessor processor;
 
     public HardwareInfoService() {
         systemInfo = new SystemInfo();
         i18nService = new I18nService();
+        hardwareInfo = systemInfo.getHardware();
+        processor = hardwareInfo.getProcessor();
     }
 
     public static String twoDecimalPlaces(double value) {
@@ -27,15 +31,16 @@ public class HardwareInfoService {
     }
 
     public String getCpuInfo() {
-        HardwareAbstractionLayer hardwareInfo = systemInfo.getHardware();
-        CentralProcessor processor = hardwareInfo.getProcessor();
-
         double frequencyGHzDouble = valueOf(processor.getMaxFreq()).doubleValue() / 1000000000;
         String frequencyGHz = twoDecimalPlaces(frequencyGHzDouble);
 
         return "CPU: " + processor.getProcessorIdentifier() + " Logical cores: "
                 + processor.getPhysicalProcessorCount() + " Threads: " + processor.getLogicalProcessorCount()
                 + " @ " + frequencyGHz + "GHz\r\n";
+    }
+
+    public int getCPULogicalCoreCount() {
+        return processor.getLogicalProcessorCount();
     }
 
     public String getGpuInfo() {

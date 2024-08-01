@@ -46,21 +46,7 @@ class ThumpTestApplicationTest {
     }
 
     @Test
-    void ensureRunCPUBurnButtonBehavesAsExpected(final FxRobot robot) {
-        var expectedText = "Button was clicked!";
-
-        robot.clickOn("#cpuRunBurnTestButton");
-
-        TextArea logArea = (TextArea) scene.lookup("#logArea");
-        assertTrue(logArea.getText().contains(expectedText));
-    }
-
-    @Test
     void ensureClearButtonBehavesAsExpected(final FxRobot robot) {
-        for (var i = 0; i <= 5; i++) {
-            robot.clickOn("#cpuRunBurnTestButton");
-        }
-
         robot.clickOn("#clearButton");
 
         TextArea logArea = (TextArea) scene.lookup("#logArea");

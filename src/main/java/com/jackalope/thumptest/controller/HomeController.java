@@ -1,6 +1,7 @@
 /* Copyright (C) 2024 Jackalope Technologies Ltd - All Rights Reserved */
 package com.jackalope.thumptest.controller;
 
+import com.jackalope.thumptest.service.CPUTestService;
 import com.jackalope.thumptest.service.HardwareInfoService;
 import com.jackalope.thumptest.service.I18nService;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
     private final HardwareInfoService hardwareInfoService;
     private final I18nService i18nService;
+    private final CPUTestService cpuTestService;
 
     @FXML
     public Button cpuRunBurnTestButton;
@@ -20,8 +22,9 @@ public class HomeController {
     public TextArea logArea;
 
     public HomeController() {
-        this.hardwareInfoService = new HardwareInfoService();
+        hardwareInfoService = new HardwareInfoService();
         i18nService = new I18nService();
+        cpuTestService = new CPUTestService();
     }
 
     public void initialize() {
@@ -36,7 +39,9 @@ public class HomeController {
     @FXML
     protected void onCpuRunBurnTestButtonClick() {
         log.debug("CPU Run Burn Test button clicked.");
-        logArea.appendText(i18nService.getString("text.buttonWasClicked") + "\r\n");
+        logArea.appendText(i18nService.getString("text.performCPUBurnTest") + "\r\n");
+
+        cpuTestService.performCPUBurnTest(false);
     }
 
     @FXML
@@ -44,5 +49,12 @@ public class HomeController {
         log.debug("Clear button clicked.");
 
         logArea.clear();
+    }
+
+    @FXML
+    protected void onStopTestsButtonClick() {
+        log.debug("Stop Tests button clicked.");
+
+        cpuTestService.stopTests();
     }
 }
