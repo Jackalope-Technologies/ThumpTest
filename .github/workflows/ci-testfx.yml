@@ -8,17 +8,17 @@ on:
 
 jobs:
   Build-With-Tests-Windows:
-    uses: ./github/workflows/build-with-tests.yml
+    uses: ./github/workflows/build-with-tests.yml@main
     with:
       os: windows-latest
 
   Build-With-Tests-Linux:
-    uses: ./github/workflows/build-with-tests.yml
+    uses: ./github/workflows/build-with-tests.yml@main
     with:
       os: ubuntu-latest
 
   Build-With-Tests-Mac:
-    uses: ./github/workflows/build-with-tests.yml
+    uses: ./github/workflows/build-with-tests.yml@main
     with:
       os: macos-latest
 
