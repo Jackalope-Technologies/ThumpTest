@@ -1,28 +1,56 @@
-name: CI Build
-run-name: CI build by ${{ github.actor }} 🚀
+name: CI TestFX Build
+run-name: CI TestFX build by ${{ github.actor }} 🚀
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  actions: read
+  checks: write
+  contents: read
+  issues: read
+  packages: read
+  pull-requests: write
+  statuses: read
+  security-events: write
+
+env:
+  DISPLAY: ":99"
+  XVFB_PARMS: "-screen 0 1920x1080x24 -nolisten unix"
+  OPENJFX_VERSION: "21"
+
 jobs:
   Linux-Build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - uses: actions/checkout@v4
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+
       - name: Setup JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
+          java-package: 'jdk+fx'
           distribution: 'zulu'
+
+      - name: Cache Gradle Resources
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Set up Virtual Display (for Linux)
+        if: runner.os == 'Linux'
+        run: |
+          Xvfb ${{env.DISPLAY}} ${{env.XVFB_PARMS}} &
 
       # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
       # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
@@ -30,7 +58,7 @@ jobs:
         uses: gradle/actions/setup-gradle@dbbdc275be76ac10734476cc723d82dfe7ec6eda # v3.4.2
 
       - name: Build with Gradle Wrapper
-        run: ./gradlew clean assemble
+        run: ./gradlew clean build
 
   Dependency-Submission:
     runs-on: ubuntu-latest
