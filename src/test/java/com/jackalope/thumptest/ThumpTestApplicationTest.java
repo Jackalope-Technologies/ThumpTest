@@ -37,7 +37,7 @@ class ThumpTestApplicationTest {
 
     @Test
     void hasClearButton() {
-        FxAssert.verifyThat("#clearButton", LabeledMatchers.hasText("Clear"));
+        FxAssert.verifyThat("#clearButton", LabeledMatchers.hasText("Clearr"));
     }
 
     @Test
