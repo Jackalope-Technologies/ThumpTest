@@ -53,7 +53,7 @@ dependencies {
     implementation("org.testfx:testfx-junit5:${testFXVersion}") {
         exclude(group = "org.hamcrest")
     }
-    testImplementation("org.hamcrest:hamcrest:2.2")
+    testImplementation("org.hamcrest:hamcrest:3.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
