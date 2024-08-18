@@ -16,6 +16,7 @@ import org.testfx.matcher.control.LabeledMatchers;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(ApplicationExtension.class)
@@ -61,6 +62,14 @@ class ThumpTestApplicationTest {
 
         TextArea logArea = (TextArea) scene.lookup("#logArea");
         assertTrue(logArea.getText().startsWith("CPU: "));
+    }
+
+    @Test
+    void ensureFileCloseBehavesAsExpected(final FxRobot robot) {
+        robot.clickOn("#menuItemFile");
+        robot.clickOn("#menuItemClose");
+
+        assertNotNull(scene);
     }
 
 }

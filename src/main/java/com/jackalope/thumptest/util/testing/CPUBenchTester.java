@@ -36,7 +36,7 @@ public class CPUBenchTester extends HardwareTester {
                 long sleepTime = milliseconds * 1000000L; // convert to nanoseconds
 
                 for (var i = 0; i < runs; i++) {
-                    log.debug("Run #{}", i);
+                    log.trace("Run #{}", i);
                     CPUTestUtil.generateLoad(sleepTime);
                     // Thread.sleep here gives a chance for the thread to be interrupted by the UI
                     Thread.sleep(1);

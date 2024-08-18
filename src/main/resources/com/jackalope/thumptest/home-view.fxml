@@ -18,9 +18,9 @@
    <graphic>
       <MenuBar fx:id="menuBar">
         <menus>
-          <Menu mnemonicParsing="false" text="%menuItem.file">
+          <Menu id="menuItemFile" fx:id="menuItemFile" mnemonicParsing="false" text="%menuItem.file">
             <items>
-              <MenuItem mnemonicParsing="false" text="%menuItem.close" />
+              <MenuItem id="menuItemClose" fx:id="menuItemClose" mnemonicParsing="false" onAction="#onCloseMenuItemClick" text="%menuItem.close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="%menuItem.help">

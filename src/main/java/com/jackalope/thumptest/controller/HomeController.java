@@ -6,7 +6,9 @@ import com.jackalope.thumptest.service.HardwareInfoService;
 import com.jackalope.thumptest.service.I18nService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -22,6 +24,9 @@ public class HomeController {
 
     @FXML
     public TextArea logArea;
+
+    @FXML
+    public MenuItem menuItemClose;
 
     public HomeController() {
         hardwareInfoService = new HardwareInfoService();
@@ -86,5 +91,19 @@ public class HomeController {
         logArea.appendText(i18nService.getString("text.stopTests") + "\r\n");
 
         cpuTestService.stopTests();
+    }
+
+    @FXML
+    protected void onCloseMenuItemClick() {
+        log.debug("Menu item close clicked.");
+
+        closeWindow();
+
+        log.debug("Application closing..");
+    }
+
+    private void closeWindow() {
+        Stage stage = (Stage) logArea.getScene().getWindow();
+        stage.close();
     }
 }
