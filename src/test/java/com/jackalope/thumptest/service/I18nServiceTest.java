@@ -33,4 +33,17 @@ class I18nServiceTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void testGetFormattedString() {
+        var expected = "Performing CPU bench test for 50 runs..";
+
+        Object[] performMessageArgs = {
+                50
+        };
+
+        var actual = i18nService.getFormattedString("text.performCPUBenchTest", performMessageArgs);
+
+        assertEquals(expected, actual);
+    }
+
 }

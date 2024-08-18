@@ -3,6 +3,7 @@ package com.jackalope.thumptest.service;
 
 import lombok.Getter;
 
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -21,6 +22,12 @@ public class I18nService {
 
     public String getString(final String key) {
         return bundle.getString(key);
+    }
+
+    public String getFormattedString(final String key, final Object[] messageArguments) {
+        MessageFormat formatter = new MessageFormat(getString(key), locale);
+
+        return formatter.format(messageArguments);
     }
 
 }

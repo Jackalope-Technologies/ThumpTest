@@ -46,11 +46,21 @@ class ThumpTestApplicationTest {
     }
 
     @Test
+    void hasRunCPUBenchButton() {
+        FxAssert.verifyThat("#cpuRunBenchTestButton", LabeledMatchers.hasText("Run CPU Bench Test"));
+    }
+
+    @Test
+    void hasStopTestsButton() {
+        FxAssert.verifyThat("#stopTestsButton", LabeledMatchers.hasText("Stop Tests"));
+    }
+
+    @Test
     void ensureClearButtonBehavesAsExpected(final FxRobot robot) {
         robot.clickOn("#clearButton");
 
         TextArea logArea = (TextArea) scene.lookup("#logArea");
-        assertTrue(logArea.getText().isEmpty());
+        assertTrue(logArea.getText().startsWith("CPU: "));
     }
 
 }

@@ -11,6 +11,7 @@
                <Button fx:id="cpuRunBurnTestButton" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCpuRunBurnTestButtonClick" text="%button.runCPUBurnTest" />
                <Button fx:id="stopTestsButton" layoutX="744.0" layoutY="381.0" mnemonicParsing="false" onAction="#onStopTestsButtonClick" text="%button.stopTests" />
                <Button fx:id="clearButton" layoutX="865.0" layoutY="381.0" mnemonicParsing="false" onAction="#onClearButtonClick" text="%button.clear" />
+               <Button id="cpuRunBenchTestButton" fx:id="cpuRunBenchTestButton" layoutX="175.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCpuRunBenchTestButtonClick" text="%button.runCPUBenchTest" />
             </children></AnchorPane>
         </content>
       </ScrollPane>

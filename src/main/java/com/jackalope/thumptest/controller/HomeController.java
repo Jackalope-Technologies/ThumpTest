@@ -17,6 +17,8 @@ public class HomeController {
 
     @FXML
     public Button cpuRunBurnTestButton;
+    @FXML
+    public Button cpuRunBenchTestButton;
 
     @FXML
     public TextArea logArea;
@@ -30,6 +32,8 @@ public class HomeController {
     public void initialize() {
         log.info("Initialising UI..");
 
+        logArea.clear();
+
         logArea.setText(this.hardwareInfoService.getCpuInfo());
         logArea.appendText(this.hardwareInfoService.getGpuInfo());
 
@@ -42,18 +46,44 @@ public class HomeController {
         logArea.appendText(i18nService.getString("text.performCPUBurnTest") + "\r\n");
 
         cpuTestService.performCPUBurnTest(false);
+
+        logArea.appendText(i18nService.getString("text.finishCPUBurnTest") + "\r\n");
+    }
+
+    @FXML
+    protected void onCpuRunBenchTestButtonClick() throws InterruptedException {
+        log.debug("CPU Run Bench Test button clicked.");
+
+        int defaultRuns = 100;
+
+        Object[] performMessageArgs = {
+                defaultRuns
+        };
+
+        logArea.appendText(i18nService.getFormattedString("text.performCPUBenchTest", performMessageArgs) + "\r\n");
+
+        long timeTaken = cpuTestService.performCPUBenchTest(false, defaultRuns);
+
+        Object[] finishMessageArgs = {
+                defaultRuns,
+                timeTaken
+        };
+
+        logArea.appendText(i18nService.getFormattedString("text.finishCPUBenchTest", finishMessageArgs) + "\r\n");
     }
 
     @FXML
     protected void onClearButtonClick() {
         log.debug("Clear button clicked.");
 
-        logArea.clear();
+        initialize();
     }
 
     @FXML
     protected void onStopTestsButtonClick() {
         log.debug("Stop Tests button clicked.");
+
+        logArea.appendText(i18nService.getString("text.stopTests") + "\r\n");
 
         cpuTestService.stopTests();
     }

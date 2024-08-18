@@ -1,11 +1,18 @@
 /* Copyright (C) 2024 Jackalope Technologies Ltd - All Rights Reserved */
 package com.jackalope.thumptest.util.testing;
 
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class CPUBurnTester extends HardwareTester {
+@Slf4j
+public class CPUBenchTester extends HardwareTester {
     private Thread worker;
     private AtomicBoolean running = new AtomicBoolean(false);
+
+    @Setter
+    private int runs = 100;
 
     public void start() {
         worker = new Thread(this);
@@ -28,11 +35,14 @@ public class CPUBurnTester extends HardwareTester {
                 int milliseconds = 500;
                 long sleepTime = milliseconds * 1000000L; // convert to nanoseconds
 
-                while (true) {
+                for (var i = 0; i < runs; i++) {
+                    log.debug("Run #{}", i);
                     CPUTestUtil.generateLoad(sleepTime);
                     // Thread.sleep here gives a chance for the thread to be interrupted by the UI
                     Thread.sleep(1);
                 }
+
+                running.set(false);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
