@@ -23,11 +23,6 @@
               <MenuItem mnemonicParsing="false" text="%menuItem.close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="%menuItem.edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="%menuItem.delete" />
-            </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="%menuItem.help">
             <items>
               <MenuItem mnemonicParsing="false" text="%menuItem.about" />
