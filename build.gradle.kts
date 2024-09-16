@@ -46,7 +46,7 @@ dependencies {
     implementation("com.dlsc.formsfx:formsfx-core:11.6.0") {
         exclude(group = "org.openjfx")
     }
-    implementation("com.github.oshi:oshi-core:6.6.2")
+    implementation("com.github.oshi:oshi-core:6.6.4")
     implementation("ch.qos.logback:logback-classic:1.5.6")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
