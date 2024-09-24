@@ -7,3 +7,5 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "Dependabot: "
+    reviewers:
+      - "EM-Creations"
