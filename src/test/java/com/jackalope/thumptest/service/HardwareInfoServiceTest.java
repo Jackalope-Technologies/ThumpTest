@@ -4,7 +4,7 @@ package com.jackalope.thumptest.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class HardwareInfoServiceTest {
     private HardwareInfoService hardwareInfoService;
@@ -26,6 +26,20 @@ class HardwareInfoServiceTest {
         var gpuInfo = hardwareInfoService.getGpuInfo();
 
         assertFalse(gpuInfo.isEmpty());
+    }
+
+    @Test
+    void testGetCPUTemperature() {
+        var cpuTemperature = hardwareInfoService.getCPUTemperature();
+
+        assertFalse(cpuTemperature.isEmpty());
+    }
+
+    @Test
+    void testGetGPUTemperature() {
+        var gpuTemperature = hardwareInfoService.getCPUTemperature();
+
+        assertFalse(gpuTemperature.isEmpty());
     }
 
 }

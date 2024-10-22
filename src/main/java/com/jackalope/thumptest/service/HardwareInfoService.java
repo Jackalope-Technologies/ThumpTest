@@ -1,6 +1,7 @@
 /* Copyright (C) 2024 Jackalope Technologies Ltd - All Rights Reserved */
 package com.jackalope.thumptest.service;
 
+import lombok.extern.slf4j.Slf4j;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GraphicsCard;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import static java.lang.Long.valueOf;
 
+@Slf4j
 public class HardwareInfoService {
     private final SystemInfo systemInfo;
     private final I18nService i18nService;
@@ -49,5 +51,17 @@ public class HardwareInfoService {
         GraphicsCard gpu1 = graphicsCards.getFirst();
 
         return "GPU: " + gpu1.getName() + " Software Version: " + gpu1.getVersionInfo() + "\r\n";
+    }
+
+    public String getCPUTemperature() {
+        double cpuTemperature = hardwareInfo.getSensors().getCpuTemperature();
+
+        log.info("CPU Temperature: {}", cpuTemperature);
+
+        return twoDecimalPlaces(cpuTemperature) + "°C";
+    }
+
+    public String getGPUTemperature() {
+        return i18nService.getString("info.notsupported");
     }
 }

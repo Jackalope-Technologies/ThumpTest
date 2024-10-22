@@ -72,4 +72,14 @@ class HomeControllerTest {
         assertNotNull(scene);
     }
 
+    @Test
+    void hasCPUTempLabel() {
+        FxAssert.verifyThat("#cpuTempLabel", LabeledMatchers.hasText("CPU Temp:"));
+    }
+
+    @Test
+    void hasGPUTempLabel() {
+        FxAssert.verifyThat("#gpuTempLabel", LabeledMatchers.hasText("GPU Temp:"));
+    }
+
 }

@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
@@ -33,6 +34,12 @@ public class HomeController {
     @FXML
     public MenuItem menuItemClose;
 
+    @FXML
+    public Label cpuTemp;
+
+    @FXML
+    public Label gpuTemp;
+
     public HomeController() {
         hardwareInfoService = new HardwareInfoService();
         i18nService = new I18nService();
@@ -46,6 +53,8 @@ public class HomeController {
 
         logArea.setText(this.hardwareInfoService.getCpuInfo());
         logArea.appendText(this.hardwareInfoService.getGpuInfo());
+
+        updateTemperatures();
 
         log.info("UI initialised.");
     }
@@ -128,5 +137,11 @@ public class HomeController {
         stage.setScene(scene);
 
         stage.show();
+    }
+
+    // TODO (#18): Call this every x seconds to update the temperatures live on the UI
+    private void updateTemperatures() {
+        cpuTemp.setText(hardwareInfoService.getCPUTemperature());
+        gpuTemp.setText(hardwareInfoService.getGPUTemperature());
     }
 }

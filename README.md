@@ -86,7 +86,9 @@ ThumpTest is intended to be a JavaFX application which will help you to run test
 1. Install JRE (Java Runtime Environment) 21+
 2. Check the releases tab
 3. Download the latest release of ThumpTest
-4. Run it locally.
+4. (Optional - Windows) Download [Open Hardware Monitor](https://openhardwaremonitor.org/downloads/) and run it alongside ThumpTest - This can help retrieve CPU temperature
+when the reading is not being published to Windows Management Instrumentation (WMI).
+5. Run ThumpTest.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
