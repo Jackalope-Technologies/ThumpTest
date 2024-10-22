@@ -1,15 +1,20 @@
 /* Copyright (C) 2024 Jackalope Technologies Ltd - All Rights Reserved */
 package com.jackalope.thumptest.controller;
 
+import com.jackalope.thumptest.ThumpTestApplication;
 import com.jackalope.thumptest.service.CPUTestService;
 import com.jackalope.thumptest.service.HardwareInfoService;
 import com.jackalope.thumptest.service.I18nService;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
+
+import java.io.IOException;
 
 @Slf4j
 public class HomeController {
@@ -102,8 +107,26 @@ public class HomeController {
         log.debug("Application closing..");
     }
 
+    @FXML
+    protected void onAboutMenuItemClick() throws IOException {
+        log.debug("Menu item about clicked.");
+
+        openAboutDialog();
+    }
+
     private void closeWindow() {
         Stage stage = (Stage) logArea.getScene().getWindow();
         stage.close();
+    }
+
+    private void openAboutDialog() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("about-view.fxml"));
+        fxmlLoader.setResources(i18nService.getBundle());
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle(i18nService.getString("title.about"));
+        stage.setScene(scene);
+
+        stage.show();
     }
 }

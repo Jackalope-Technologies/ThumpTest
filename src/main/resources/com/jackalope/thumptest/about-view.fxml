@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<DialogPane id="paneAbout" fx:id="paneAbout" contentText="ThumpTest" headerText="ThumpTest" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jackalope.thumptest.controller.AboutController">
+    <header>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="480.0">
+         <children>
+            <ImageView fitHeight="162.0" fitWidth="298.0" layoutX="91.0" layoutY="73.0">
+               <image>
+                  <Image url="@banner.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="aboutTitle" layoutX="176.0" layoutY="24.0" text="ThumpTest">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+    </header>
+    <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
+         <children>
+            <Label fx:id="versionLabel" layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="106.0" text="%label.version" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label id="aboutVersion" fx:id="aboutVersion" layoutX="120.0" layoutY="14.0" prefHeight="18.0" prefWidth="81.0" text="Unknown" />
+            <Button fx:id="buttonClose" layoutX="185.0" layoutY="68.0" mnemonicParsing="false" onAction="#closeWindow" text="%menuItem.close">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="homepageLabel" layoutX="14.0" layoutY="40.0" prefHeight="18.0" prefWidth="106.0" text="%label.homepage" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="aboutHomepage" layoutX="119.0" layoutY="38.0" onAction="#onHomepageClicked" prefHeight="23.0" prefWidth="352.0" text="Unknown" />
+         </children></AnchorPane>
+    </content>
+    <expandableContent>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+    </expandableContent>
+</DialogPane>
