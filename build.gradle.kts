@@ -1,21 +1,27 @@
 import org.javamodularity.moduleplugin.extensions.TestModuleOptions
 
+buildscript {
+    apply("dependencies.gradle.kts")
+}
+
 plugins {
+    val modulePluginVersion = project.extra.get("modulePluginVersion") as String
+    val javafxPluginVersion = project.extra.get("javafxPluginVersion") as String
+    val jlinkPluginVersion = project.extra.get("jlinkPluginVersion") as String
+    val lombokPluginVersion = project.extra.get("lombokPluginVersion") as String
+
     java
     application
-    id("org.javamodularity.moduleplugin").version("1.8.15")
-    id("org.openjfx.javafxplugin").version("0.0.13")
-    id("org.beryx.jlink").version("2.25.0")
-    id("io.freefair.lombok").version("8.6")
+    id("org.javamodularity.moduleplugin").version(modulePluginVersion)
+    id("org.openjfx.javafxplugin").version(javafxPluginVersion)
+    id("org.beryx.jlink").version(jlinkPluginVersion)
+    id("io.freefair.lombok").version(lombokPluginVersion)
 }
 
 repositories {
     mavenCentral()
     google()
 }
-
-val junitVersion by extra("5.10.0")
-val testFXVersion by extra("4.0.18")
 
 java {
     group = "com.jackalope"
@@ -41,20 +47,29 @@ javafx {
     modules = listOf("javafx.controls", "javafx.fxml")
 }
 
+val controlsFX = project.extra.get("controlsFX") as String
+val formsFX = project.extra.get("formsFX") as String
+val oshi = project.extra.get("oshi") as String
+val logback = project.extra.get("logback") as String
+val testFX = project.extra.get("testFX") as String
+val hamcrest = project.extra.get("hamcrest") as String
+val junitJupiterEngine = project.extra.get("junitJupiterEngine") as String
+val junitJupiterAPI = project.extra.get("junitJupiterAPI") as String
+
 dependencies {
-    implementation("org.controlsfx:controlsfx:11.2.1")
-    implementation("com.dlsc.formsfx:formsfx-core:11.6.0") {
+    implementation(controlsFX)
+    implementation(formsFX) {
         exclude(group = "org.openjfx")
     }
-    implementation("com.github.oshi:oshi-core:6.6.5")
-    implementation("ch.qos.logback:logback-classic:1.5.11")
+    implementation(oshi)
+    implementation(logback)
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    implementation("org.testfx:testfx-junit5:${testFXVersion}") {
+    testImplementation(junitJupiterAPI)
+    implementation(testFX) {
         exclude(group = "org.hamcrest")
     }
-    testImplementation("org.hamcrest:hamcrest:3.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation(hamcrest)
+    testRuntimeOnly(junitJupiterEngine)
 }
 
 tasks.test {
