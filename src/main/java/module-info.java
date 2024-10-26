@@ -10,6 +10,7 @@ module com.jackalope.thumptest {
     requires java.desktop;
 
     opens com.jackalope.thumptest to javafx.fxml;
+    opens com.jackalope.thumptest.util to javafx.base;
     exports com.jackalope.thumptest;
     exports com.jackalope.thumptest.controller;
     opens com.jackalope.thumptest.controller to javafx.fxml;

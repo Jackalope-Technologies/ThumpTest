@@ -35,6 +35,9 @@ public class HomeController {
     public MenuItem menuItemClose;
 
     @FXML
+    public MenuItem menuItemHardwareInfo;
+
+    @FXML
     public Label cpuTemp;
 
     @FXML
@@ -123,17 +126,32 @@ public class HomeController {
         openAboutDialog();
     }
 
+    @FXML
+    protected void onHardwareInfoMenuItemClick() throws IOException {
+        log.debug("Menu item hardware information clicked.");
+
+        openHardwareInfoDialog();
+    }
+
     private void closeWindow() {
         Stage stage = (Stage) logArea.getScene().getWindow();
         stage.close();
     }
 
     private void openAboutDialog() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("about-view.fxml"));
+        openNewView("about-view.fxml", i18nService.getString("title.about"));
+    }
+
+    private void openHardwareInfoDialog() throws IOException {
+        openNewView("hardware-info-view.fxml", i18nService.getString("title.hardwareInfo"));
+    }
+
+    private void openNewView(final String view, final String title) throws IOException {
+        var fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource(view));
         fxmlLoader.setResources(i18nService.getBundle());
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setTitle(i18nService.getString("title.about"));
+        var scene = new Scene(fxmlLoader.load());
+        var stage = new Stage();
+        stage.setTitle(title);
         stage.setScene(scene);
 
         stage.show();

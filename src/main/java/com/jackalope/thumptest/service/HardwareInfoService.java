@@ -32,11 +32,19 @@ public class HardwareInfoService {
         return df.format(value);
     }
 
+    public CentralProcessor getCPUObj() {
+        return processor;
+    }
+
+    public SystemInfo getSystemInfoObj() {
+        return systemInfo;
+    }
+
     public String getCpuInfo() {
         double frequencyGHzDouble = valueOf(processor.getMaxFreq()).doubleValue() / 1000000000;
         String frequencyGHz = twoDecimalPlaces(frequencyGHzDouble);
 
-        return "CPU: " + processor.getProcessorIdentifier() + " Logical cores: "
+        return "CPU: " + processor.getProcessorIdentifier().getName() + " Logical cores: "
                 + processor.getPhysicalProcessorCount() + " Threads: " + processor.getLogicalProcessorCount()
                 + " @ " + frequencyGHz + "GHz\r\n";
     }
@@ -48,7 +56,7 @@ public class HardwareInfoService {
     public String getGpuInfo() {
         HardwareAbstractionLayer hardwareInfo = systemInfo.getHardware();
         List<GraphicsCard> graphicsCards = hardwareInfo.getGraphicsCards();
-        GraphicsCard gpu1 = graphicsCards.getFirst();
+        GraphicsCard gpu1 = graphicsCards.getLast();
 
         return "GPU: " + gpu1.getName() + " Software Version: " + gpu1.getVersionInfo() + "\r\n";
     }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class HardwareInfoServiceTest {
     private HardwareInfoService hardwareInfoService;
@@ -40,6 +41,20 @@ class HardwareInfoServiceTest {
         var gpuTemperature = hardwareInfoService.getCPUTemperature();
 
         assertFalse(gpuTemperature.isEmpty());
+    }
+
+    @Test
+    void testGetCPUObj() {
+        var cpuObj = hardwareInfoService.getCPUObj();
+
+        assertNotNull(cpuObj);
+    }
+
+    @Test
+    void testGetSysInfoObj() {
+        var systemInfo = hardwareInfoService.getSystemInfoObj();
+
+        assertNotNull(systemInfo);
     }
 
 }

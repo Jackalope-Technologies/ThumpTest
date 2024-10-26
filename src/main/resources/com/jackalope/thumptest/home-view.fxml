@@ -11,6 +11,11 @@
         <Menu id="menuItemFile" fx:id="menuItemFile" mnemonicParsing="false" text="%menuItem.file">
             <MenuItem id="menuItemClose" fx:id="menuItemClose" mnemonicParsing="false" onAction="#onCloseMenuItemClick" text="%menuItem.close" />
         </Menu>
+      <Menu id="menuItemTools" fx:id="menuItemTools" mnemonicParsing="false" text="%menuItem.tools">
+         <items>
+            <MenuItem id="menuItemHardwareInfo" fx:id="menuItemHardwareInfo" mnemonicParsing="false" onAction="#onHardwareInfoMenuItemClick" text="%menuItem.hardwareInfo" />
+         </items>
+      </Menu>
         <Menu id="menuItemHelp" mnemonicParsing="false" text="%menuItem.help">
             <MenuItem id="menuItemAbout" fx:id="menuItemAbout" mnemonicParsing="false" onAction="#onAboutMenuItemClick" text="%menuItem.about" />
         </Menu>
