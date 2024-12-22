@@ -46,7 +46,7 @@ dependencies {
     implementation("com.github.oshi:oshi-core:6.6.5")
     implementation("ch.qos.logback:logback-classic:1.5.11")
 
-    testImplementation( "org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testImplementation( "org.junit.jupiter:junit-jupiter-api:5.11.4")
     implementation("org.testfx:testfx-junit5:4.0.18") {
         exclude(group = "org.hamcrest")
     }
