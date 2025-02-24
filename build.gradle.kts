@@ -51,7 +51,7 @@ dependencies {
         exclude(group = "org.hamcrest")
     }
     testImplementation("org.hamcrest:hamcrest:3.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.4")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.12.0")
 }
 
 tasks.test {
