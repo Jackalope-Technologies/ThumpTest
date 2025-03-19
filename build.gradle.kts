@@ -3,10 +3,10 @@ import org.javamodularity.moduleplugin.extensions.TestModuleOptions
 plugins {
     java
     application
-    id("org.javamodularity.moduleplugin").version("1.8.15")
-    id("org.openjfx.javafxplugin").version("0.0.13")
-    id("org.beryx.jlink").version("2.25.0")
-    id("io.freefair.lombok").version("8.6")
+    alias(libs.plugins.moduleplugin)
+    alias(libs.plugins.javafxplugin)
+    alias(libs.plugins.jLink)
+    alias(libs.plugins.lombok)
 }
 
 repositories {
@@ -39,19 +39,19 @@ javafx {
 }
 
 dependencies {
-    implementation("org.controlsfx:controlsfx:11.2.1")
-    implementation("com.dlsc.formsfx:formsfx-core:11.6.0") {
+    implementation(libs.controlsfx)
+    implementation(libs.formsfx) {
         exclude(group = "org.openjfx")
     }
-    implementation("com.github.oshi:oshi-core:6.7.1")
-    implementation("ch.qos.logback:logback-classic:1.5.18")
+    implementation(libs.oshi)
+    implementation(libs.logback)
 
-    testImplementation( "org.junit.jupiter:junit-jupiter-api:5.11.4")
-    implementation("org.testfx:testfx-junit5:4.0.18") {
+    testImplementation(libs.junit.jupiter.api)
+    implementation(libs.testfx.junit) {
         exclude(group = "org.hamcrest")
     }
-    testImplementation("org.hamcrest:hamcrest:3.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.4")
+    testImplementation(libs.hamcrest)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 tasks.test {
