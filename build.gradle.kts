@@ -44,7 +44,7 @@ dependencies {
         exclude(group = "org.openjfx")
     }
     implementation("com.github.oshi:oshi-core:6.7.1")
-    implementation("ch.qos.logback:logback-classic:1.5.16")
+    implementation("ch.qos.logback:logback-classic:1.5.18")
 
     testImplementation( "org.junit.jupiter:junit-jupiter-api:5.11.4")
     implementation("org.testfx:testfx-junit5:4.0.18") {
