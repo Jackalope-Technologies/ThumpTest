@@ -19,7 +19,7 @@ lombokVersion = "8.6"
 
 jLinkVersion = "2.25.0"
 
-javafxpluginVersion = "0.0.13"
+javafxpluginVersion = "0.1.0"
 
 modulepluginVersion = "1.8.15"
 
