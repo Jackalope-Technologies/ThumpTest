@@ -15,7 +15,7 @@ testfxJunitVersion = "4.0.18"
 hamcrestVersion = "3.0"
 
 # Plugin versions
-lombokVersion = "8.6"
+lombokVersion = "8.13"
 
 jLinkVersion = "3.1.1"
 
