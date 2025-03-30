@@ -30,7 +30,7 @@ public class HardwareInfoController {
 
     public HardwareInfoController() {
         i18nService = new I18nService();
-        hardwareInfoService = new HardwareInfoService();
+        hardwareInfoService = new HardwareInfoService(i18nService);
     }
 
     public void initialize() {

@@ -8,11 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class HardwareInfoServiceTest {
+    private I18nService i18nService;
     private HardwareInfoService hardwareInfoService;
 
     @BeforeEach
     void setup() {
-        hardwareInfoService = new HardwareInfoService();
+        i18nService = new I18nService();
+        hardwareInfoService = new HardwareInfoService(i18nService);
     }
 
     @Test

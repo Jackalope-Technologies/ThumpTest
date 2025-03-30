@@ -44,8 +44,8 @@ public class HomeController {
     public Label gpuTemp;
 
     public HomeController() {
-        hardwareInfoService = new HardwareInfoService();
         i18nService = new I18nService();
+        hardwareInfoService = new HardwareInfoService(i18nService);
         cpuTestService = new CPUTestService(hardwareInfoService, i18nService);
     }
 

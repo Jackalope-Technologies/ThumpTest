@@ -25,7 +25,7 @@ public class CPUBurnTester extends HardwareTester {
 
         while (running.get()) {
             try {
-                int milliseconds = 500;
+                var milliseconds = 500;
                 long sleepTime = milliseconds * 1000000L; // convert to nanoseconds
 
                 while (true) {
