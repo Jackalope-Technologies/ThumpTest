@@ -6,23 +6,19 @@ import com.jackalope.thumptest.util.testing.CPUBurnTester;
 import com.jackalope.thumptest.util.testing.HardwareTester;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 @Slf4j
 public class CPUTestService {
     private final HardwareInfoService hardwareInfoService;
     private final I18nService i18nService;
-    private final List<HardwareTester> workers = new ArrayList<>();
+    private final List<HardwareTester> workers = new CopyOnWriteArrayList<>();
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    public CPUTestService() {
-        hardwareInfoService = new HardwareInfoService();
-        i18nService = new I18nService();
+    public CPUTestService(HardwareInfoService hardwareInfoService, I18nService i18nService) {
+        this.hardwareInfoService = hardwareInfoService;
+        this.i18nService = i18nService;
     }
 
     public void performCPUBurnTest(boolean singleCore) {
@@ -74,8 +70,11 @@ public class CPUTestService {
     public void stopTests() {
         log.debug("Stopping tests, {} workers running..", workers.size());
 
-        executor.shutdownNow();
-        executor.close();
+        if (executor != null) {
+            executor.shutdownNow();
+            executor.close();
+        }
+
         workers.forEach(HardwareTester::interrupt);
         workers.clear();
 

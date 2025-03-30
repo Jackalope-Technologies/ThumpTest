@@ -14,7 +14,10 @@ class CPUTestServiceTest {
 
     @BeforeEach
     void setup() {
-        cpuTestService = new CPUTestService();
+        var hardwareInfoService = new HardwareInfoService();
+        var i18nService = new I18nService();
+
+        cpuTestService = new CPUTestService(hardwareInfoService, i18nService);
     }
 
     @Test

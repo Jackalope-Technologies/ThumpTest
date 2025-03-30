@@ -46,7 +46,7 @@ public class HomeController {
     public HomeController() {
         hardwareInfoService = new HardwareInfoService();
         i18nService = new I18nService();
-        cpuTestService = new CPUTestService();
+        cpuTestService = new CPUTestService(hardwareInfoService, i18nService);
     }
 
     public void initialize() {
