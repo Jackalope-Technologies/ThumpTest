@@ -37,9 +37,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      - id: jacoco
-      - name: Add Code Coverage to PR
-        uses: madrapps/jacoco-report@v1.7.1
+      - uses: madrapps/jacoco-report@v1.7.1
+        id: jacoco
+        name: Add Code Coverage to PR
         if: github.event_name == 'pull_request'
         with:
           paths: |
