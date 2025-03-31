@@ -14,6 +14,8 @@ testfxJunitVersion = "4.0.18"
 
 hamcrestVersion = "3.0"
 
+mockitoVersion = "5.16.1"
+
 # Plugin versions
 lombokVersion = "8.13"
 
@@ -32,6 +34,7 @@ junit-jupiter-api = { group = "org.junit.jupiter",name = "junit-jupiter-api", ve
 junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junitVersion" }
 testfx-junit = { group = "org.testfx", name = "testfx-junit5", version.ref = "testfxJunitVersion" }
 hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrestVersion" }
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
 
 [plugins]
 moduleplugin = { id = "org.javamodularity.moduleplugin", version.ref = "modulepluginVersion" }

@@ -3,20 +3,24 @@ package com.jackalope.thumptest.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HardwareInfoServiceTest {
+    @Mock
     private I18nService i18nService;
+
+    @InjectMocks
     private HardwareInfoService hardwareInfoService;
 
     @BeforeEach
     void setup() {
-        i18nService = new I18nService();
-        hardwareInfoService = new HardwareInfoService(i18nService);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -27,7 +31,7 @@ class HardwareInfoServiceTest {
     }
 
     @Test
-    void testGetGpuInfo() {
+    void givenGPUIsPresentTestGetGpuInfo() {
         String gpuInfo = hardwareInfoService.getGpuInfo();
 
         assertFalse(gpuInfo.isEmpty());
@@ -59,6 +63,13 @@ class HardwareInfoServiceTest {
         SystemInfo systemInfo = hardwareInfoService.getSystemInfoObj();
 
         assertNotNull(systemInfo);
+    }
+
+    @Test
+    void testGetCPULogicalCoreCount() {
+        int coreCount = hardwareInfoService.getCPULogicalCoreCount();
+
+        assertTrue(coreCount > 0);
     }
 
 }

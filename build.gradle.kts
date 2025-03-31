@@ -2,6 +2,7 @@ import org.javamodularity.moduleplugin.extensions.TestModuleOptions
 
 plugins {
     java
+    jacoco
     application
     alias(libs.plugins.moduleplugin)
     alias(libs.plugins.javafxplugin)
@@ -51,14 +52,46 @@ dependencies {
         exclude(group = "org.hamcrest")
     }
     testImplementation(libs.hamcrest)
+    testImplementation(libs.mockito)
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
     useJUnitPlatform()
     extensions.configure(TestModuleOptions::class) {
         runOnClasspath = true
     }
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required = true
+        html.required = true
+        csv.required = false
+    }
+    classDirectories.setFrom(
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude("com/jackalope/thumptest/controller/*.class")
+            }
+        })
+    )
+}
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = BigDecimal.valueOf(0.5)
+            }
+        }
+    }
+}
+
+tasks.check {
+    dependsOn(tasks.jacocoTestCoverageVerification)
 }
 
 jlink {
