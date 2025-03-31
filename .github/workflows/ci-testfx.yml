@@ -34,6 +34,10 @@ jobs:
 
   Add-Code-Coverage-To-PR:
     runs-on: ubuntu-latest
+    needs:
+      - Build-With-Tests-Windows
+      - Build-With-Tests-Linux
+      - Build-With-Tests-Mac
     permissions:
       contents: write
     steps:
