@@ -3,6 +3,8 @@ package com.jackalope.thumptest.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,42 +21,42 @@ class HardwareInfoServiceTest {
 
     @Test
     void testGetCpuInfo() {
-        var cpuInfo = hardwareInfoService.getCpuInfo();
+        String cpuInfo = hardwareInfoService.getCpuInfo();
 
         assertFalse(cpuInfo.isEmpty());
     }
 
     @Test
     void testGetGpuInfo() {
-        var gpuInfo = hardwareInfoService.getGpuInfo();
+        String gpuInfo = hardwareInfoService.getGpuInfo();
 
         assertFalse(gpuInfo.isEmpty());
     }
 
     @Test
     void testGetCPUTemperature() {
-        var cpuTemperature = hardwareInfoService.getCPUTemperature();
+        String cpuTemperature = hardwareInfoService.getCPUTemperature();
 
         assertFalse(cpuTemperature.isEmpty());
     }
 
     @Test
     void testGetGPUTemperature() {
-        var gpuTemperature = hardwareInfoService.getCPUTemperature();
+        String gpuTemperature = hardwareInfoService.getCPUTemperature();
 
         assertFalse(gpuTemperature.isEmpty());
     }
 
     @Test
     void testGetCPUObj() {
-        var cpuObj = hardwareInfoService.getCPUObj();
+        CentralProcessor cpuObj = hardwareInfoService.getCPUObj();
 
         assertNotNull(cpuObj);
     }
 
     @Test
     void testGetSysInfoObj() {
-        var systemInfo = hardwareInfoService.getSystemInfoObj();
+        SystemInfo systemInfo = hardwareInfoService.getSystemInfoObj();
 
         assertNotNull(systemInfo);
     }

@@ -41,7 +41,7 @@ class I18nServiceTest {
                 50
         };
 
-        var actual = i18nService.getFormattedString("text.performCPUBenchTest", performMessageArgs);
+        String actual = i18nService.getFormattedString("text.performCPUBenchTest", performMessageArgs);
 
         assertEquals(expected, actual);
     }

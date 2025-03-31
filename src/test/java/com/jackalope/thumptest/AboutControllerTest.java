@@ -23,7 +23,7 @@ class AboutControllerTest {
 
     @Start
     private void start(final Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("about-view.fxml"));
+        var fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("about-view.fxml"));
         ResourceBundle bundle = ResourceBundle.getBundle("Strings");
         fxmlLoader.setResources(bundle);
         scene = new Scene(fxmlLoader.load());

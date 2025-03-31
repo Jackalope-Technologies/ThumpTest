@@ -5,10 +5,12 @@ import com.jackalope.thumptest.service.I18nService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Slf4j
 public class ThumpTestApplication extends Application {
@@ -16,13 +18,15 @@ public class ThumpTestApplication extends Application {
     public void start(final Stage stage) throws IOException {
         log.info("Starting application..");
 
-        I18nService i18nService = new I18nService();
+        var i18nService = new I18nService();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("home-view.fxml"));
+        var fxmlLoader = new FXMLLoader(ThumpTestApplication.class.getResource("home-view.fxml"));
         fxmlLoader.setResources(i18nService.getBundle());
-        Scene scene = new Scene(fxmlLoader.load());
+        var scene = new Scene(fxmlLoader.load());
         stage.setTitle("ThumpTest");
         stage.setScene(scene);
+        stage.getIcons().add(
+                new Image(Objects.requireNonNull(ThumpTestApplication.class.getResourceAsStream("logo.png"))));
         stage.show();
 
         log.info("Application started.");

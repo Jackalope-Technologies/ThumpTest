@@ -12,10 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Slf4j
 public class HomeController {
@@ -76,7 +78,7 @@ public class HomeController {
     protected void onCpuRunBenchTestButtonClick() throws InterruptedException {
         log.debug("CPU Run Bench Test button clicked.");
 
-        int defaultRuns = 100;
+        var defaultRuns = 100;
 
         Object[] performMessageArgs = {
                 defaultRuns
@@ -153,7 +155,8 @@ public class HomeController {
         var stage = new Stage();
         stage.setTitle(title);
         stage.setScene(scene);
-
+        stage.getIcons().add(
+                new Image(Objects.requireNonNull(ThumpTestApplication.class.getResourceAsStream("logo.png"))));
         stage.show();
     }
 

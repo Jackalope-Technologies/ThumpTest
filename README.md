@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Jackalope-Technologies/ThumpTest">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/Jackalope-Technologies/ThumpTest/blob/main/src/main/resources/com/jackalope/thumptest/banner.png?raw=true" alt="Logo" width="180" height="80">
   </a>
 
 <h3 align="center">ThumpTest</h3>
@@ -57,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![ThumpTest Screen Shot][product-screenshot]](https://github.com/Jackalope-Technologies/ThumpTest)
+[![ThumpTest Screen Shot](https://github.com/Jackalope-Technologies/ThumpTest/blob/main/src/main/resources/com/jackalope/thumptest/logo.png?raw=true)](https://github.com/Jackalope-Technologies/ThumpTest)
 
 ThumpTest is intended to be a JavaFX application which will help you to run tests on hardware components of a PC.
 
