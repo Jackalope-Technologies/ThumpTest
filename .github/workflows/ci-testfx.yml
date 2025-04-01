@@ -44,7 +44,7 @@ jobs:
       - uses: madrapps/jacoco-report@v1.7.1
         id: jacoco
         name: Add Code Coverage to PR
-        if: github.event_name == 'pull_request_target'
+        if: github.event_name == 'pull_request_target' && github.actor != 'dependabot[bot]'
         with:
           paths: |
             ${{ github.workspace }}/**/build/reports/jacoco/test/jacocoTestReport.xml
