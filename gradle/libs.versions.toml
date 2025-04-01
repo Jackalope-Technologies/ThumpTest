@@ -35,6 +35,7 @@ junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engi
 testfx-junit = { group = "org.testfx", name = "testfx-junit5", version.ref = "testfxJunitVersion" }
 hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrestVersion" }
 mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
+mockito-junit-jupiter = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockitoVersion" }
 
 [plugins]
 moduleplugin = { id = "org.javamodularity.moduleplugin", version.ref = "modulepluginVersion" }

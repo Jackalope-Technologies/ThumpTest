@@ -1,7 +1,7 @@
 // make module visible
 --add-modules
-  org.testfx,org.testfx.junit5
+  org.testfx,org.testfx.junit5,org.mockito.junit.jupiter
 
 // "requires java.scripting"
 --add-reads
-  com.jackalope.thumptest=org.testfx,org.testfx.junit5
+  com.jackalope.thumptest=org.testfx,org.testfx.junit5,org.mockito.junit.jupiter

@@ -53,6 +53,7 @@ dependencies {
     }
     testImplementation(libs.hamcrest)
     testImplementation(libs.mockito)
+    testImplementation(libs.mockito.junit.jupiter)
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
