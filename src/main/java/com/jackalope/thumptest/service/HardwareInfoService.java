@@ -8,6 +8,7 @@ import oshi.hardware.GraphicsCard;
 import oshi.hardware.HardwareAbstractionLayer;
 
 import java.text.DecimalFormat;
+import java.util.Comparator;
 import java.util.List;
 
 @Slf4j
@@ -16,12 +17,14 @@ public class HardwareInfoService {
     private final I18nService i18nService;
     private final HardwareAbstractionLayer hardwareInfo;
     private final CentralProcessor processor;
+    private final GraphicsCard graphicsCard;
 
     public HardwareInfoService(I18nService i18nService) {
         this.systemInfo = new SystemInfo();
         this.i18nService = i18nService;
         this.hardwareInfo = systemInfo.getHardware();
         this.processor = hardwareInfo.getProcessor();
+        this.graphicsCard = getMostLikelyGPU(hardwareInfo.getGraphicsCards());
     }
 
     public static String twoDecimalPlaces(double value) {
@@ -38,6 +41,10 @@ public class HardwareInfoService {
         return systemInfo;
     }
 
+    public GraphicsCard getGPUObj() {
+        return graphicsCard;
+    }
+
     public String getCpuInfo() {
         double frequencyGHz = processor.getMaxFreq() / 1_000_000_000.0;
         return String.format("CPU: %s Logical cores: %d Threads: %d @ %sGHz\r\n",
@@ -52,13 +59,11 @@ public class HardwareInfoService {
     }
 
     public String getGpuInfo() {
-        List<GraphicsCard> graphicsCards = hardwareInfo.getGraphicsCards();
-        if (graphicsCards.isEmpty()) {
+        if (null == graphicsCard) {
             return "No GPU found";
+        } else {
+            return "GPU: " + graphicsCard.getName() + " Software Version: " + graphicsCard.getVersionInfo() + "\r\n";
         }
-        GraphicsCard gpu1 = graphicsCards.getLast();
-
-        return "GPU: " + gpu1.getName() + " Software Version: " + gpu1.getVersionInfo() + "\r\n";
     }
 
     public String getCPUTemperature() {
@@ -71,5 +76,12 @@ public class HardwareInfoService {
 
     public String getGPUTemperature() {
         return i18nService.getString("info.notsupported");
+    }
+
+    private GraphicsCard getMostLikelyGPU(final List<GraphicsCard> graphicsCards) {
+        // If there are multiple GPUs, return the one with the highest VRAM, it's likely the primary GPU
+        return graphicsCards.stream()
+                .max(Comparator.comparingLong(GraphicsCard::getVRam))
+                .orElse(null);
     }
 }

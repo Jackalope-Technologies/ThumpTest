@@ -73,14 +73,15 @@ public class HardwareInfoController {
         hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.cpuFreq"), vendorFrequencyGHz));
         hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.cpuMaxFreq"), maxFrequencyGHz));
 
-        GraphicsCard gpu = systemInfo.getHardware().getGraphicsCards().getLast();
-
-        hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.memory"), Long.toString(systemInfo.getHardware().getMemory().getTotal())));
-        hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuId"), gpu.getDeviceId()));
-        hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuName"), gpu.getName()));
-        hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuVendor"), gpu.getVendor()));
-        hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuVersion"), gpu.getVersionInfo()));
-        hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuVRAM"), Long.toString(gpu.getVRam())));
+        GraphicsCard gpu = hardwareInfoService.getGPUObj();
+        if (null != gpu) {
+            hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.memory"), Long.toString(systemInfo.getHardware().getMemory().getTotal())));
+            hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuId"), gpu.getDeviceId()));
+            hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuName"), gpu.getName()));
+            hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuVendor"), gpu.getVendor()));
+            hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuVersion"), gpu.getVersionInfo()));
+            hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.gpuVRAM"), Long.toString(gpu.getVRam())));
+        }
 
         hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.osManu"), systemInfo.getOperatingSystem().getManufacturer()));
         hardwareTable.getItems().add(new HardwareInfoTableCell(i18nService.getString("table.osFamily"), systemInfo.getOperatingSystem().getFamily()));

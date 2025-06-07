@@ -8,8 +8,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
+import oshi.hardware.GraphicsCard;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class HardwareInfoServiceTest {
@@ -62,10 +65,27 @@ class HardwareInfoServiceTest {
     }
 
     @Test
+    void givenGPUIsPresentWhenGetGPUObjIsCalledReturnExpected() {
+        GraphicsCard gpuObj = hardwareInfoService.getGPUObj();
+
+        assertNotNull(gpuObj);
+    }
+
+    @Test
     void testGetCPULogicalCoreCount() {
         int coreCount = hardwareInfoService.getCPULogicalCoreCount();
 
         assertTrue(coreCount > 0);
+    }
+
+    @Test
+    void testGetGPUTemperature_ReturnsNotSupportedMessage() {
+        when(i18nService.getString("info.notsupported")).thenReturn("Not supported");
+
+        String result = hardwareInfoService.getGPUTemperature();
+
+        assertEquals("Not supported", result);
+        verify(i18nService).getString("info.notsupported");
     }
 
 }
