@@ -8,7 +8,7 @@ oshiVersion = "6.8.2"
 
 logbackVersion = "1.5.18"
 
-junitVersion = "5.13.1"
+junitVersion = "5.13.2"
 
 testfxJunitVersion = "4.0.18"
 
