@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     commit-message:
       prefix: "Dependabot: "
     reviewers:
