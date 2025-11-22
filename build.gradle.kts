@@ -54,7 +54,8 @@ dependencies {
     testImplementation(libs.hamcrest)
     testImplementation(libs.mockito)
     testImplementation(libs.mockito.junit.jupiter)
-    testRuntimeOnly(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
