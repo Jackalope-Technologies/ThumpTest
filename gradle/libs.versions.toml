@@ -6,7 +6,7 @@ formsfxVersion = "11.6.0"
 
 oshiVersion = "6.9.1"
 
-logbackVersion = "1.5.20"
+logbackVersion = "1.5.21"
 
 junitVersion = "6.0.1"
 
