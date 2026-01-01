@@ -14,7 +14,7 @@ testfxJunitVersion = "4.0.18"
 
 hamcrestVersion = "3.0"
 
-mockitoVersion = "5.20.0"
+mockitoVersion = "5.21.0"
 
 # Plugin versions
 lombokVersion = "9.1.0"
