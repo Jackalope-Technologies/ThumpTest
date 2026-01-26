@@ -32,7 +32,7 @@ public class ThumpTestApplication extends Application {
         log.info("Application started.");
     }
 
-    public static void main(final String[] args) {
+    static void main(final String[] args) {
         launch();
     }
 }

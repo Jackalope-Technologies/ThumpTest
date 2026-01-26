@@ -19,8 +19,8 @@ java {
     group = "com.jackalope"
     version = "1.0-SNAPSHOT"
 
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 
     modularity.inferModulePath = false
 }
@@ -35,7 +35,7 @@ application {
 }
 
 javafx {
-    version = "21"
+    version = "25"
     modules = listOf("javafx.controls", "javafx.fxml")
 }
 
