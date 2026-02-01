@@ -19,7 +19,7 @@ mockitoVersion = "5.21.0"
 # Plugin versions
 lombokVersion = "9.1.0"
 
-jLinkVersion = "3.2.0"
+jLinkVersion = "3.2.1"
 
 javafxpluginVersion = "0.1.0"
 
