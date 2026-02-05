@@ -17,7 +17,7 @@ hamcrestVersion = "3.0"
 mockitoVersion = "5.21.0"
 
 # Plugin versions
-lombokVersion = "9.1.0"
+lombokVersion = "9.2.0"
 
 jLinkVersion = "3.2.1"
 
